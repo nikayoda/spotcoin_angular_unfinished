@@ -1,0 +1,106 @@
+<div class="card" [nbSpinner]="loading">
+  <div class="card-body">
+    <div class="card-title">Create new Employee</div>
+    <p *ngIf="shopsEmpty">Shops not found</p>
+    <form *ngIf="!shopsEmpty" class="step-content" (ngSubmit)="f.form.valid && create()" #f="ngForm">
+      <div class="row">
+
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username" class="form-label">Username <span class="text-red">*</span></label>
+            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="merchantEmployee.username"
+                   (ngModelChange)="checkMerchantEmployee($event)"
+                   #username="ngModel" placeholder="Enter employee username" required/>
+            <div *ngIf="f.submitted && !username.valid" class="help-block text-red">Employee username is required</div>
+            <div *ngIf="usernameNotAvailable" class="help-block text-red">Username already taken</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password" class="form-label">Password <span class="text-red">*</span></label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="merchantEmployee.password"
+                   #password="ngModel" placeholder="Enter employee password" required/>
+            <div *ngIf="f.submitted && !password.valid" class="help-block text-red">Password is required</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+            <label for="email1" class="form-label">Email <span class="text-red">*</span></label>
+            <input type="email" class="form-control" id="email1" name="email" [(ngModel)]="merchantEmployee.email"
+                   #email="ngModel" placeholder="Enter merchant email" required/>
+            <div *ngIf="f.submitted && !email.valid" class="help-block text-red">Email is required</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
+            <label for="firstName" class="form-label">First Name <span class="text-red">*</span></label>
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="merchantEmployee.merchantEmployee.firstName"
+                   #firstName="ngModel" placeholder="Enter first name" required/>
+            <div *ngIf="f.submitted && !firstName.valid" class="help-block text-red">First name is required</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
+            <label for="lastName" class="form-label">Last Name <span class="text-red">*</span></label>
+            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="merchantEmployee.merchantEmployee.lastName"
+                   #lastName="ngModel" placeholder="Enter last name" required/>
+            <div *ngIf="f.submitted && !lastName.valid" class="help-block text-red">Last name is required</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
+            <label for="phone" class="form-label">Phone <span class="text-red">*</span></label>
+            <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="merchantEmployee.merchantEmployee.phone"
+                   #phone="ngModel" placeholder="Phone name" required/>
+            <div *ngIf="f.submitted && !phone.valid" class="help-block text-red">Phone is required</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !gender.valid }">
+            <label for="gender" class="form-label">Gender <span class="text-red">*</span></label>
+            <select required class="form-control" name="currency" [(ngModel)]="merchantEmployee.merchantEmployee.gender" id="gender"
+                    #gender="ngModel">
+              <option value="male" selected>Male</option>
+              <option value="female">Female</option>
+            </select>
+            <div *ngIf="f.submitted && !gender.valid" class="help-block text-red">Phone is required</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+          <div class="col">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !identityNumber.valid }">
+              <label for="identityNumber" class="form-label">Identity Number <span class="text-red">*</span></label>
+              <input type="text" class="form-control" id="identityNumber" name="identityNumber" [(ngModel)]="merchantEmployee.merchantEmployee.identityNumber"
+                     #identityNumber="ngModel" placeholder="Identity number" required/>
+              <div *ngIf="f.submitted && !identityNumber.valid" class="help-block text-red">Identity number is required</div>
+            </div>
+          </div>
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !shopId.valid }">
+            <label for="shopId" class="form-label">Shop <span class="text-red">*</span></label>
+            <select required class="form-control" name="shopId" [(ngModel)]="merchantEmployee.merchantEmployee.shopId" id="shopId"
+                    #shopId="ngModel">
+              <option *ngFor="let shop of merchantShops;" [value]="shop.id">{{ shop.name }}</option>
+            </select>
+            <div *ngIf="f.submitted && !shopId.valid" class="help-block text-red">Shop Id is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button [disabled]="loading || !f.form.valid" class="btn btn-primary" (click)="create()">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

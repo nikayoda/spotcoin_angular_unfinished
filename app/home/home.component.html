@@ -1,0 +1,149 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-5 col-xl-3">
+      <div class="card p-3">
+        <div class="">
+          <div class="text-center">
+            <div class="su-title">Orders</div>
+            <div class="main-numb pt-3 pb-2">{{maDashboard.totalOrders | number}}</div>
+            <div class="pl-4 pr-4">
+              <hr>
+            </div>
+            <div>
+              <div class="su-title pt-2 pb-2">Today's Orders</div>
+              <div class="sec-num">{{maDashboard.todayOrders | number}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card p-3 mt-3">
+        <div class="">
+          <div class="text-center">
+            <div class="su-title">Employees</div>
+            <div class="main-numb pt-3 pb-2">{{maDashboard.employeeCount | number}}</div>
+            <div class="pl-4 pr-4">
+              <hr>
+            </div>
+            <div>
+              <div class="su-title pt-2 pb-2">Customers</div>
+              <div class="sec-num">{{maDashboard.customerCount | number}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-7 col-xl-6 mt-3 mt-lg-0">
+      <div class="card p-3">
+        <div class="">
+          <div class="text-center">
+            <div class="su-title">Shops</div>
+            <div class="main-numb pt-3 pb-2">{{maDashboard.shopCount | number}}</div>
+            <div class="pl-4 pr-4">
+              <hr>
+            </div>
+            <owl-carousel-o [options]="customOptions">
+              <ng-container *ngFor="let shopInfo of shopInfos">
+                <ng-template carouselSlide>
+                  <div class="su-title-b">{{shopInfo.name}}
+                    <span class="status-dot mr-1"><i class="fas fa-circle" [class.t-green]="shopInfo.isActive" [class.t-red]="!shopInfo.isActive"></i></span>
+                  </div>
+                  <div class="pl-4 pr-4">
+                    <hr>
+                  </div>
+                  <nb-reveal-card>
+                    <nb-card-front>
+                      <nb-card>
+                        <nb-card-body>
+                          <div class="row">
+                            <div class="col-lg-4 col-md-6">
+                              <div class="su-title pt-2 pb-2">Total Orders</div>
+                              <div class="sec-num">{{shopInfo.totalOrders | number}}</div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                              <div class="su-title pt-2 pb-2">Today Orders</div>
+                              <div class="sec-num">{{shopInfo.todayOrders | number}}</div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                              <div class="su-title pt-2 pb-2">Employees</div>
+                              <div class="sec-num">{{shopInfo.employeeCount | number}}</div>
+                            </div>
+                          </div>
+                          <div class="row pt-4">
+                            <div class="col-md-6">
+                              <div class="su-title pt-2 pb-2">Total Fiat Orders</div>
+                              <div class="sec-num">{{shopInfo.fiatInOrders | number}}</div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="su-title pt-2 pb-2">Total Spot Orders</div>
+                              <div class="sec-num">{{shopInfo.spotInOrders | number}}</div>
+                            </div>
+                          </div>
+                        </nb-card-body>
+                      </nb-card>
+
+                    </nb-card-front>
+                    <nb-card-back>
+                      <nb-card>
+                        <nb-card-body>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="su-title pt-2 pb-2">Country</div>
+                              <div class="text-muted">{{shopInfo.countryName}}</div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="su-title pt-2 pb-2">Created At</div>
+                              <div class="text-muted">{{shopInfo.createdDate | date:'shortDate'}}</div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="su-title pt-2 pb-2">Email</div>
+                              <div class="text-muted">{{shopInfo.email}}</div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="su-title pt-2 pb-2">Phone</div>
+                              <div class="text-muted">{{shopInfo.phone}}</div>
+                            </div>
+                          </div>
+                          <div class="su-title pt-2 pb-2">Address</div>
+                          <div class="text-muted">{{shopInfo.address}}, {{shopInfo.town}}, {{shopInfo.zip}}</div>
+                        </nb-card-body>
+                      </nb-card>
+                    </nb-card-back>
+                  </nb-reveal-card>
+
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+            <div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-lg-5 col-xl-3 mt-3 mt-lg-0">
+      <div class="card p-3">
+        <div class="">
+          <div class="text-center">
+            <div class="su-title">Total in Fiat</div>
+            <div class="main-numb pt-3 pb-2">{{maDashboard.totalReceivedFiat | number}}</div>
+            <div class="pl-4 pr-4">
+              <hr>
+            </div>
+            <div>
+              <div class="su-title pt-2 pb-2">Paid SPOT</div>
+              <div class="sec-num">{{maDashboard.totalPaidSpot | number}}</div>
+            </div>
+            <div>
+              <div class="su-title pt-2 pb-2">Deposit SPOT</div>
+              <div class="sec-num">{{maDashboard.totalDepositedSpot | number}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

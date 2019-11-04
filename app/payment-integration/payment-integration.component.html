@@ -1,0 +1,125 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-title text-center mb-4 mt-2"><h5>Button Integration</h5></div>
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="box-border">
+          <div class="box-border-title">Properties</div>
+          <div class="">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="languages">Language</label>
+                  <select class="form-control" id="languages" [(ngModel)]="lang">
+                    <option value="en">EN</option>
+                    <option value="es">ES</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="currency">Currency</label>
+                  <select class="form-control" id="currency" [(ngModel)]="currency">
+                    <option value="usd">USD</option>
+                    <option value="eur">EUR</option>
+                    <option value="get">GEL</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="amount">Amount</label>
+                  <input type="text" class="form-control" id="amount" [(ngModel)]="amount">
+                  <small class="form-text text-muted ">Default none</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea [(ngModel)]="description" id="description" cols="30" rows="2" class="form-control"></textarea>
+                  <small class="form-text text-muted ">Default none</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="buttonName">Button Name</label>
+                  <input type="text" class="form-control" id="buttonName" [(ngModel)]="buttonName">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="orderId">Order ID</label>
+                  <input type="text" class="form-control" id="orderId" [(ngModel)]="orderId">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="successPaymentUrl">Success Payment Url</label>
+                  <input type="text" class="form-control" id="successPaymentUrl" [(ngModel)]="successPaymentUrl" placeholder="http://example.com/success">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="failedPaymentUrl">Fail Payment Url</label>
+                  <input type="text" class="form-control" id="failedPaymentUrl" [(ngModel)]="failedPaymentUrl" placeholder="http://example.com/failed">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box-border">
+          <div class="box-border-title">Visual</div>
+          <div class="box-border-content">
+            <button style="background-color: #0E99FF; border: none; color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 18px; cursor: pointer; font-family: sans-serif;border-radius: 8px;">{{buttonName}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+
+        <div hidden>
+          <form action="http://pay.spotcoin.com:5002/pay/checkout" method="POST">
+            <input type="text" hidden value="{{currentUser.merchantId}}" name="MerchantId">
+            <input type="text" hidden value="{{orderId}}" name="MerchantOrderId">
+            <input type="text" hidden value="{{currency}}" name="Currency">
+            <input type="text" hidden value="{{lang}}" name="Lang">
+            <input type="text" hidden value="{{amount}}" name="FiatAmount">
+            <input type="text" hidden value="{{successPaymentUrl}}" name="SuccessPaymentUrl">
+            <input type="text" hidden value="{{failedPaymentUrl}}" name="FailedPaymentUrl">
+            <textarea name="Description" hidden>{{description}}</textarea>
+            <button type="submit" style="background-color: #0E99FF; border: none; color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 18px; cursor: pointer; font-family: sans-serif;border-radius: 8px;">{{buttonName}}</button>
+          </form>
+        </div>
+        <div class="box-border">
+          <div class="box-border-title">HTML Code</div>
+          <code #codeTag>
+            &#60;form action="http://pay.spotcoin.com:5002/pay/checkout" method="post"&#62;&#60;input type="text" hidden value="{{currentUser.merchantId}}" name="MerchantId"&#62;&#60;input type="text" hidden value="{{orderId}}" name="MerchantOrderId"&#62;&#60;input type="text" hidden value="{{currency}}" name="Currency"&#62;&#60;input type="text" hidden value="{{lang}}" name="Lang"&#62;&#60;input type="text" hidden value="{{amount}}" name="FiatAmount"&#62;&#60;input type="text" hidden value="{{successPaymentUrl}}" name="SuccessPaymentUrl"&#62;&#60;input type="text" hidden value="{{failedPaymentUrl}}" name="FailedPaymentUrl"&#62;&#60;textarea name="Description" hidden&#62;{{description}}&#60;/textarea&#62;&#60;button style="background-color: #0E99FF;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 18px;cursor: pointer;font-family: sans-serif;border-radius: 8px;"&#62;{{buttonName}}&#60;/button&#62;&#60;/form&#62;
+          </code>
+          <div class="mt-4 text-right">
+            <button class="btn btn-sm btn-outline-primary" (click)="copyCode()" >Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card mt-4">
+  <div class="card-body">
+    <div class="card-title text-center mb-4 mt-2"><h5>Form Integration</h5></div>
+    <p>Coming Soon...</p>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <div class="card-title text-center mb-4 mt-2"><h5>API Integration</h5></div>
+    <p>Coming Soon...</p>
+  </div>
+</div>

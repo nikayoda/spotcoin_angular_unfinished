@@ -1,0 +1,345 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i&display=swap');
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+$light-blue: #0E99FF;
+$dark-blue: #393BD7;
+$light-black: #1A2125;
+$light-white: #EBEFF4;
+$green: #00d68f;
+$red: #ff3d71;
+
+.ng2-smart-pagination[_ngcontent-c6] .page-link-next[_ngcontent-c6], .ng2-smart-pagination[_ngcontent-c6] .page-link-prev[_ngcontent-c6] {
+  font-size: unset !important;
+}
+.ng2-smart-pagination[_ngcontent-c6] .ng2-smart-page-item[_ngcontent-c6] {
+  cursor: pointer;
+}
+[_nghost-c3] table tr td, [_nghost-c3] table tr th {
+  padding: .4em .4em !important;
+}
+.ng2-smart-th {
+  padding: .4em .4em !important;
+}
+.card-body {
+  padding: 1.1rem 1.1rem;
+}
+
+.nb-theme-default nb-menu .menu-item .menu-icon {
+  font-size: 1.5rem;
+  width: 2.5rem;
+  margin: 0 0.4rem 0;
+  text-align: center;
+  color: #a4abb3;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ced4da no-repeat center/cover;
+  position: relative;
+  text-align: center;
+  color: #868e96;
+  font-weight: 600;
+  vertical-align: bottom;
+  font-size: .875rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.avatar i {
+  font-size: 125%;
+  vertical-align: sub;
+}
+
+.avatar-status {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: .75rem;
+  height: .75rem;
+  border: 2px solid #fff;
+  background: #868e96;
+  border-radius: 50%;
+}
+.leading-none {
+  line-height: 1 !important;
+}
+
+.fz-2 {
+  font-size: 2rem;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.mr-23 {
+  margin-right: 2.3rem;
+}
+
+.nb-theme-default nb-layout .layout nb-layout-header nav {
+  height: unset !important;
+  padding: 0 !important;
+  display: block;
+}
+:host nb-layout-header a {
+  font-size: 2rem;
+  text-decoration: none;
+}
+:host nb-layout-column {
+  height: 30vw;
+}
+:host nb-layout-column:first-child {
+  background: #f4f4f7;
+}
+
+.nb-theme-default nb-layout .layout nb-layout-header nav a {
+  color: white;
+}
+.nb-theme-default nb-layout .layout nb-layout-header nav a:focus, .nb-theme-default nb-layout .layout nb-layout-header nav a:active, .nb-theme-default nb-layout .layout nb-layout-header nav a:hover {
+  color: white;
+}
+
+.nb-theme-default nb-layout.with-subheader nb-sidebar .main-container {
+  background-color: #1A2125;
+}
+
+.nb-theme-default nb-menu .menu-item .menu-icon {
+  color: $light-blue;
+}
+.nb-theme-default nb-menu {
+  background-color: transparent;
+  color: white;
+}
+
+.nb-theme-default nb-menu .menu-item a:hover, .nb-theme-default nb-menu .menu-item a.active {
+  background: linear-gradient(to right,#0E99FF, #393BD7);
+  color: #2a2a2a;
+  font-weight: 600;
+}
+.nb-theme-default nb-menu .menu-item a:hover .menu-icon, .nb-theme-default nb-menu .menu-item a:hover .chevron, .nb-theme-default nb-menu .menu-item a.active .menu-icon, .nb-theme-default nb-menu .menu-item a.active .chevron {
+  color: white;
+}
+.nb-theme-default nb-menu .menu-item a:hover, .nb-theme-default nb-menu .menu-item a.active {
+  color: white;
+}
+
+.nb-theme-default nb-menu .menu-items>.menu-item:first-child {
+  border-top: none;
+}
+.nb-theme-default nb-menu .menu-items>.menu-item {
+  border-bottom: none;
+}
+.nb-theme-default nb-sidebar.compacted nb-menu .menu-item a.active::before {
+  background: white;
+}
+
+.nb-theme-default nb-menu .menu-item a {
+  border-radius: 0;
+}
+.nb-theme-default ng2-smart-table table tr.ng2-smart-titles th a:hover, .nb-theme-default ng2-smart-table table tr.ng2-smart-titles th a:active, .nb-theme-default ng2-smart-table table tr.ng2-smart-titles th a:visited {
+  color: #1e6bb8;
+  text-decoration: underline;
+}
+.nb-theme-default ng2-smart-table table tr th, .nb-theme-default ng2-smart-table table tr th a {
+  color: #1e6bb8;
+  text-decoration: none;
+}
+
+.nb-theme-default nb-tabset .tabset .tab a::before {
+  height: 4px !important;
+  bottom: -1px !important;
+}
+.nb-theme-default nb-tabset .tabset .tab.active a {
+  font-size: 1rem;
+}
+.nb-theme-default .nb-badge.nb-badge-danger {
+  font-size: .8rem !important;
+}
+.card {
+  overflow: auto;
+  -webkit-box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.2);
+  box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.2);
+  border: none;
+}
+
+.card-title {
+  color: $light-black;
+  font-weight: bold;
+}
+
+.text-red {
+  color: red;
+  font-size: .85rem;
+  padding-left: 0.2rem;
+  padding-top: .2rem;
+}
+
+.grad-blue {
+  background-image: linear-gradient(to right,#0E99FF, #393BD7);
+}
+.blue-grad-text {
+  background: -webkit-linear-gradient(to right,#0E99FF, #393BD7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dark-bg {
+  background-color: #1A2125;
+}
+.light-gray-bg {
+  background-color: $light-white;
+}
+.header-brand-img {
+  width: 2rem;
+  height: 2rem;
+}
+.brand-logo-cont {
+  text-align: center;
+  padding-bottom: 1rem;
+  margin-top: -.2rem;
+  margin-left: -.5rem;
+}
+
+.btn-logout {
+  background-color: transparent;
+  border-radius: 3rem;
+  border-color: white;
+  border-style: solid;
+  border-width: .1rem;
+  text-transform: uppercase;
+  color: white;
+  &:hover {
+    background-color: white;
+    color: $dark-blue !important;
+  }
+}
+.login-container {
+  background-color: $light-white;
+}
+.vertical-center {
+  min-width: 25rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-blue-grad {
+  border: none;
+  -webkit-box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.2);
+  box-shadow: 1px 1px 4px -1px rgba(0,0,0,0.2);
+  background: white;
+  span {
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    background:linear-gradient(to right,#0E99FF, #393BD7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.1rem;
+    padding-bottom: .3rem;
+    padding-top: .3rem;
+  }
+}
+.btn-blue-grad:hover {
+  background: linear-gradient(to right,#0E99FF, #393BD7);
+  span {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: white;
+  }
+}
+
+.su-title {
+  color: black;
+  font-size: 1rem;
+}
+.su-title-b {
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.main-numb {
+  color: $light-blue;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.sec-num {
+  color: $light-blue;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.status-dot {
+  vertical-align: super;
+  font-size: .5rem;
+}
+.t-red {
+  color: $red;
+}
+.t-green {
+  color: $green;
+}
+
+.content-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.span1 {
+  font-weight: 300;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  vertical-align: middle;
+}
+
+
+.box-border {
+  display: block;
+  padding: 1.5rem;
+  border-radius: .1rem;
+  background-color: #fff;
+  border: 1px solid #e6ecf8;
+  position: relative;
+  height: 100%;
+  &-title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding-left: .7rem;
+    padding-right: .7rem;
+    background-color: white;
+    transform: translate(-50%, -50%);
+  }
+  &-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+.nb-theme-default small, .nb-theme-default .small {
+  font-size: 80%;
+}

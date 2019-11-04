@@ -1,0 +1,185 @@
+<div class="row">
+  <div class="col"><button class="btn btn-primary" routerLink="/shops/new">Create Shop</button></div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-lg-6 col-xl-6 mt-3 " *ngFor="let shopInfoAll of shopsInfoAll">
+    <div class="card">
+      <div class="pt-4 pb-3 pl-5">
+        <div class="su-title-b">{{shopInfoAll.shopInfo.name}}
+          <span class="status-dot mr-1"><i class="fas fa-circle" [class.t-green]="shopInfoAll.shopInfo.isActive" [class.t-red]="!shopInfoAll.shopInfo.isActive"></i></span>
+          <span class="span1">Last 2 Day Statistic</span>
+        </div>
+      </div>
+      <nb-tabset fullWidth (changeTab)="reRender()">
+        <nb-tab tabTitle="Fiat Amount"
+                [badgeText]="shopInfoAll.fiatLastTwoDayCompStr"
+                [badgeStatus]="shopInfoAll.fiatStatColor">
+          <div class="mb-3 mt-3">
+            <ngx-charts-line-chart
+              [view]="undefined"
+              [scheme]="colorScheme"
+              [results]="shopInfoAll.shopFiatStatArr"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="false"
+              [autoScale]="true"
+            >
+            </ngx-charts-line-chart>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="Spot Amount"
+                [badgeText]="shopInfoAll.spotLastTwoDayStr"
+                [badgeStatus]="shopInfoAll.spotStatColor">
+          <div class="mb-3 mt-3">
+            <ngx-charts-line-chart
+              [view]="undefined"
+              [scheme]="colorScheme"
+              [results]="shopInfoAll.shopSpotStatArr"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="false"
+              [autoScale]="true"
+            >
+            </ngx-charts-line-chart>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="Order Number"
+                [badgeText]="shopInfoAll.orderLastTwoDayStr"
+                [badgeStatus]="shopInfoAll.orderStatColor">
+          <div class="mb-3 mt-3">
+            <ngx-charts-line-chart
+              [view]="undefined"
+              [scheme]="colorScheme"
+              [results]="shopInfoAll.shopOrderStatArr"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="false"
+              [autoScale]="true"
+            >
+            </ngx-charts-line-chart>
+          </div>
+        </nb-tab>
+      </nb-tabset>
+      <nb-accordion class="mt-2">
+        <nb-accordion-item>
+          <nb-accordion-item-header>
+
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+            <div class="card-body">
+              <nb-reveal-card>
+                <nb-card-front>
+                  <nb-card>
+                    <nb-card-body>
+                      <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                          <div class="su-title pt-2 pb-2">Total Orders</div>
+                          <div class="sec-num">{{shopInfoAll.shopInfo.totalOrders | number}}</div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="su-title pt-2 pb-2">Today Orders</div>
+                          <div class="sec-num">{{shopInfoAll.shopInfo.todayOrders | number}}</div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <div class="su-title pt-2 pb-2">Employees</div>
+                          <div class="sec-num">{{shopInfoAll.shopInfo.employeeCount | number}}</div>
+                        </div>
+                      </div>
+                      <div class="row pt-4">
+                        <div class="col-md-6">
+                          <div class="su-title pt-2 pb-2">Total Fiat Orders</div>
+                          <div class="sec-num">{{shopInfoAll.shopInfo.fiatInOrders | number}}</div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="su-title pt-2 pb-2">Total Spot Orders</div>
+                          <div class="sec-num">{{shopInfoAll.shopInfo.spotInOrders | number}}</div>
+                        </div>
+                      </div>
+                    </nb-card-body>
+                  </nb-card>
+
+                </nb-card-front>
+                <nb-card-back>
+                  <nb-card>
+                    <nb-card-body>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="su-title pt-2 pb-2">Country</div>
+                          <div class="text-muted">{{shopInfoAll.shopInfo.countryName}}</div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="su-title pt-2 pb-2">Created At</div>
+                          <div class="text-muted">{{shopInfoAll.shopInfo.createdDate | date:'shortDate'}}</div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="su-title pt-2 pb-2">Email</div>
+                          <div class="text-muted">{{shopInfoAll.shopInfo.email}}</div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="su-title pt-2 pb-2">Phone</div>
+                          <div class="text-muted">{{shopInfoAll.shopInfo.phone}}</div>
+                        </div>
+                      </div>
+                      <div class="su-title pt-2 pb-2">Address</div>
+                      <div class="text-muted">{{shopInfoAll.shopInfo.address}}, {{shopInfoAll.shopInfo.town}}, {{shopInfoAll.shopInfo.zip}}</div>
+                    </nb-card-body>
+                  </nb-card>
+                </nb-card-back>
+              </nb-reveal-card>
+
+            </div>
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+      </nb-accordion>
+    </div>
+    <div class="card">
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!--<div class="card">-->
+<!--  <div class="card-body">-->
+<!--    <div class="card-title">Shops Statistics-->
+<!--      <form (ngSubmit)="f.form.valid && shopsInfoByDate()" #f="ngForm" class="d-inline-block ml-3">-->
+<!--        <input nbInput-->
+<!--               placeholder="Pick Date Range"-->
+<!--               [nbDatepicker]="rangePick"-->
+<!--               [(ngModel)]="dateRange"-->
+<!--               name="dateRange"-->
+<!--               (ngModelChange)="shopsInfoByDate()">-->
+<!--        <nb-rangepicker #rangePick format="MM.DD.YYYY"></nb-rangepicker>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div class="row mt-3">-->
+<!--  <div class="col-md-4" *ngFor="let shopInfoAll.shopInfoArray of shopInfoAll.shopInfos;">-->
+<!--    <div class="card">-->
+<!--      <div class="card-body">-->
+<!--        <div>{{shopInfoAll.shopInfoArray.name}}</div>-->
+<!--        <nb-accordion>-->
+<!--          <nb-accordion-item *ngFor="let shopInfoAll.shopInfo of shopInfoAll.shopInfoArray.data">-->
+<!--            <nb-accordion-item-header>-->
+<!--              {{ shopInfoAll.shopInfo.date | date }}-->
+<!--            </nb-accordion-item-header>-->
+<!--            <nb-accordion-item-body>-->
+<!--              <p>Order Count: {{ shopInfoAll.shopInfo.orderCount }}</p>-->
+<!--              <p>Fiat Amount: {{ shopInfoAll.shopInfo.fiatAmount }}</p>-->
+<!--              <p>Spot Amount: {{ shopInfoAll.shopInfo.spotAmount }}</p>-->
+<!--            </nb-accordion-item-body>-->
+<!--          </nb-accordion-item>-->
+<!--        </nb-accordion>-->
+<!--      </div>-->
+<!--      </div>-->
+<!--  </div>-->
+<!--</div>-->

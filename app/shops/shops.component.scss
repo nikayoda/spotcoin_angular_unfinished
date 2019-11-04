@@ -1,0 +1,28 @@
+nb-card {
+  box-shadow: none !important;
+}
+nb-accordion {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border-top: 1px solid #ebeef2;
+}
+
+nb-accordion-item-header i {
+  right: 48% !important;
+}
+.nb-theme-default nb-tabset .tabset .tab a {
+  padding: 1.25rem;
+  color: #a4abb3;
+  font-size: 1rem;
+}
+.su-title-b {
+  font-size: 1.3rem;
+}
+
+[_nghost-c10] .tabset[_ngcontent-c10] .tab[_ngcontent-c10] a[_ngcontent-c10]::before {
+  height: 4px !important;
+  bottom: -1px !important;
+}
+[_nghost-c17] .nb-badge[_ngcontent-c17] {
+  font-size: .8rem !important;
+}

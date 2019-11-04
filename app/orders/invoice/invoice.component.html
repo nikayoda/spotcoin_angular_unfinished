@@ -1,0 +1,94 @@
+<nb-card>
+  <nb-card-body>
+    <div id="print" class="print">
+      <div class="bg-white m-2 p-3">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="mb-3">{{invoice.merchantName}}</h3>
+            <p>Address: {{invoice.merchantAddress}}</p>
+            <p>Country, City, ZIP: {{invoice.merchantCountry}}, {{invoice.merchantTown}}, {{invoice.merchantZip}}</p>
+            <p>Phone: {{invoice.merchantPhone}}</p>
+          </div>
+          <div class="col-md-6">
+            <h1 class="text-right">INVOICE</h1>
+          </div>
+        </div>
+        <div class="row mt-3 mb-3">
+          <div class="col-md-6">
+            <table class="table">
+              <thead class="thead-light">
+              <tr>
+                <th class="font-weight-bold">BILL TO</th>
+                <th>_</th>
+              </tr>
+              </thead>
+              <tbody class="table-borderless">
+              <tr>
+                <td class="pb-0">Full Name</td>
+                <td class="pb-0">{{invoice.customerFirstName}} {{invoice.customerLastName}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <table class="table">
+              <thead class="thead-light">
+              <tr>
+                <th class="font-weight-bold">INVOICE #</th>
+                <th class="font-weight-bold">CUSTOMER ID</th>
+                <th class="font-weight-bold">DATE</th>
+              </tr>
+              </thead>
+              <tbody class="table-borderless">
+              <tr>
+                <td>{{invoice.invoiceId}}</td>
+                <td>{{invoice.customerId}}</td>
+                <td>{{invoice.orderCreateDate | date}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <table class="table">
+              <thead class="thead-light">
+              <tr>
+                <th class="font-weight-bold">DESCRIPTION</th>
+                <th class="font-weight-bold text-right">SPOT RATE</th>
+                <th class="font-weight-bold text-right">SPOT AMOUNT</th>
+                <th class="font-weight-bold text-right">FIAT AMOUNT</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td class="border-bottom border-right">{{invoice.orderDescription}}</td>
+                <td class="text-right border-bottom border-right">{{invoice.currencyRate}}</td>
+                <td class="text-right border-bottom border-right">{{invoice.spotAmount | number}}</td>
+                <td class="text-right border-bottom">{{invoice.fiatAmount | number}}{{invoice.currency}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button routerLink="/orders" class="btn btn-secondary ml-4">Back</button>
+      </div>
+      <div class="col text-right">
+        <button
+          type="button"
+          class="btn btn-primary mr-4"
+          printSectionId="print"
+          [useExistingCss]="true"
+          styleSheetFile=""
+          ngxPrint>Print</button>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+

@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">Orders
+      <button *ngIf="currUser.role === 'Cashier'" class="btn btn-primary ml-4" routerLink="/orders/new">Create New</button></div>
+    <div class="form-group">
+      <label class="col-form-label mr-3">By Status</label>
+<!--      <select (change)="byStatus($event.target.value)" class="form-control">-->
+<!--        <option *ngFor="let status of orderStatues" [value]="status.id">{{ status.name }}</option>-->
+<!--      </select>-->
+      <nb-radio-group [(value)]="selected" name="orderStatus">
+        <nb-radio (valueChange)="byStatus($event)"
+          *ngFor="let status of orderStatues; let i = index"
+          [value]="status.id"
+          [checked]="i == 0">
+          {{ status.name }}
+        </nb-radio>
+      </nb-radio-group>
+    </div>
+    <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+  </div>
+</div>

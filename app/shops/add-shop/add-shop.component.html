@@ -1,0 +1,79 @@
+<div class="card" [nbSpinner]="loading">
+  <div class="card-body">
+    <div class="card-title">Create new shop</div>
+    <form (ngSubmit)="f.form.valid && create()" #f="ngForm">
+      <div class="row">
+
+        <div class="col">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+            <label for="name" class="form-label">Shop Name <span class="text-red">*</span></label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="shop.name"
+                   #name="ngModel" placeholder="Enter shop name" required/>
+            <div *ngIf="f.submitted && !name.valid" class="help-block text-red">Shop name is required</div>
+          </div>
+        </div>
+
+          <div class="col">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !country.valid }">
+              <label for="country" class="form-label">Country <span class="text-red">*</span></label>
+              <select required class="form-control" name="country" [(ngModel)]="shop.countryId" id="country"
+                      #country="ngModel">
+                <option *ngFor="let country of countries;" [value]="country.id">{{ country.name }}</option>
+              </select>
+              <div *ngIf="f.submitted && !country.valid" class="help-block text-red">Country is required</div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !town.valid }">
+              <label for="town" class="form-label">Town <span class="text-red">*</span></label>
+              <input type="text" class="form-control" id="town" name="town" [(ngModel)]="shop.town"
+                     #town="ngModel" placeholder="Town" required/>
+              <div *ngIf="f.submitted && !town.valid" class="help-block text-red">Town is required</div>
+            </div>
+          </div>
+      </div>
+
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !address.valid }">
+              <label for="address" class="form-label">Address <span class="text-red">*</span></label>
+              <input type="text" class="form-control" id="address" name="address" [(ngModel)]="shop.address"
+                     #address="ngModel" placeholder="Address" required/>
+              <div *ngIf="f.submitted && !address.valid" class="help-block text-red">Address is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !zip.valid }">
+              <label for="zip" class="form-label">Zip <span class="text-red">*</span></label>
+              <input type="text" class="form-control" id="zip" name="zip" [(ngModel)]="shop.zip"
+                     #zip="ngModel" placeholder="Zip" required/>
+              <div *ngIf="f.submitted && !zip.valid" class="help-block text-red">Zip is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
+              <label for="phone" class="form-label">Phone <span class="text-red">*</span></label>
+              <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="shop.phone"
+                     #phone="ngModel" placeholder="Phone" required/>
+              <div *ngIf="f.submitted && !phone.valid" class="help-block text-red">Phone is required</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+              <label for="email" class="form-label">Email <span class="text-red">*</span></label>
+              <input type="text" class="form-control" id="email" name="email" [(ngModel)]="shop.email"
+                     #email="ngModel" placeholder="Email" required/>
+              <div *ngIf="f.submitted && !email.valid" class="help-block text-red">Email is required</div>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary" [disabled]="loading || !f.form.valid"  (click)="create()">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
